@@ -1,0 +1,56 @@
+/* ConversationView 主容器样式 */
+.conversation-view {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  background-color: var(--color-bg);
+}
+
+.conversation-view__content {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* 错误提示 */
+.conversation-view__error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-4);
+  margin: 0 var(--space-4);
+  background-color: oklch(0.970 0.010 25);
+  color: var(--color-error);
+  font-size: var(--text-body-sm);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.conversation-view__error-retry {
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  color: var(--color-error);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.conversation-view__error-retry:hover {
+  opacity: 0.8;
+}
+
+.conversation-view__error-retry:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+/* 响应式 */
+@media (max-width: 640px) {
+  .conversation-view {
+    max-width: 100%;
+  }
+}

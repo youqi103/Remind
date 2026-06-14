@@ -1,0 +1,73 @@
+/* EmptyState 组件样式 */
+.empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) var(--space-6);
+  gap: var(--space-10);
+}
+
+.empty-state__header {
+  text-align: center;
+}
+
+.empty-state__title {
+  font-size: var(--text-h1);
+  font-weight: 700;
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-2);
+}
+
+.empty-state__subtitle {
+  font-size: var(--text-body);
+  color: var(--color-muted);
+}
+
+.empty-state__suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  max-width: 320px;
+}
+
+.empty-state__suggestion {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  cursor: pointer;
+  transition: background-color var(--duration-fast), border-color var(--duration-fast);
+  text-align: left;
+}
+
+.empty-state__suggestion:hover {
+  background-color: var(--color-surface);
+  border-color: var(--color-muted);
+}
+
+.empty-state__suggestion:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+.empty-state__suggestion-icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* 响应式 */
+@media (max-width: 640px) {
+  .empty-state {
+    padding: var(--space-10) var(--space-4);
+  }
+}

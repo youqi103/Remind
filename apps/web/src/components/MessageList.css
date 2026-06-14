@@ -1,0 +1,13 @@
+/* MessageList 组件样式 */
+.message-list {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 空列表时撑满高度 */
+.message-list:empty {
+  min-height: 100%;
+}

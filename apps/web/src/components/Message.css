@@ -1,0 +1,213 @@
+/* Message 组件样式 */
+.message {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  animation: message-enter var(--duration-normal) var(--ease-out);
+}
+
+.message--user {
+  flex-direction: row-reverse;
+}
+
+.message__avatar {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-caption);
+  font-weight: 600;
+}
+
+.message--ai .message__avatar {
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+}
+
+.message--user .message__avatar {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.message__content {
+  max-width: 70%;
+  min-width: 0;
+}
+
+.message__bubble {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.message--ai .message__bubble {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+}
+
+.message--user .message__bubble {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
+/* 消息内 Markdown 样式 */
+.message__bubble p {
+  margin: 0;
+}
+
+.message__bubble p + p {
+  margin-top: var(--space-3);
+}
+
+.message__bubble code {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  background-color: oklch(0.000 0 0 / 0.08);
+  padding: 0.125em 0.375em;
+  border-radius: var(--radius-sm);
+}
+
+.message--user .message__bubble code {
+  background-color: oklch(1.000 0 0 / 0.15);
+}
+
+.message__bubble pre {
+  margin: var(--space-3) 0;
+  padding: var(--space-4);
+  background-color: oklch(0.130 0.010 200);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+}
+
+.message__bubble pre code {
+  background: none;
+  padding: 0;
+  color: oklch(0.900 0.005 200);
+  font-size: var(--text-mono);
+}
+
+.message__bubble ul,
+.message__bubble ol {
+  padding-left: var(--space-5);
+  margin: var(--space-2) 0;
+}
+
+.message__bubble li {
+  margin: var(--space-1) 0;
+}
+
+.message__bubble blockquote {
+  border-left: 3px solid var(--color-primary);
+  padding-left: var(--space-3);
+  margin: var(--space-3) 0;
+  color: var(--color-muted);
+}
+
+.message--user .message__bubble blockquote {
+  border-left-color: oklch(1.000 0 0 / 0.3);
+  color: oklch(1.000 0 0 / 0.7);
+}
+
+.message__bubble a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.message__bubble h1,
+.message__bubble h2,
+.message__bubble h3 {
+  margin: var(--space-4) 0 var(--space-2);
+}
+
+.message__bubble h1 { font-size: var(--text-h2); }
+.message__bubble h2 { font-size: var(--text-h3); }
+.message__bubble h3 { font-size: var(--text-body); font-weight: 600; }
+
+/* 消息操作栏 */
+.message__actions {
+  display: flex;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.message:hover .message__actions {
+  opacity: 1;
+}
+
+.message__action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  color: var(--color-muted);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--duration-fast), color var(--duration-fast);
+}
+
+.message__action-btn:hover {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+}
+
+.message__action-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+/* 流式光标 */
+.message__cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background-color: var(--color-primary);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes message-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .message {
+    animation: none;
+  }
+  .message__cursor {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* 响应式 */
+@media (max-width: 640px) {
+  .message {
+    padding: var(--space-3) var(--space-4);
+  }
+  .message__content {
+    max-width: 85%;
+  }
+}
