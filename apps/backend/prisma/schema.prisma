@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+model UserPreference {
+  id        Int      @id @default(autoincrement())
+  key       String
+  value     String
+  type      String   @default("string") // string / number / json
+  scope     String   @default("global") // global / project / domain
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([key, scope])
+}
+
+model ChatMessage {
+  id        Int      @id @default(autoincrement())
+  role      String
+  content   String
+  createdAt DateTime @default(now())
+}
+
+model Experience {
+  id                  Int       @id @default(autoincrement())
+  title               String
+  problem             String
+  cause               String?
+  solution            String
+  tags                String?
+  sourceConversationId String?
+  usageCount          Int       @default(0)
+  hitCount            Int       @default(0)
+  acceptCount         Int       @default(0)
+  score               Float     @default(0.5)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+}
