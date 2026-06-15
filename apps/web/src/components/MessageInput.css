@@ -1,0 +1,110 @@
+/* MessageInput 组件样式 */
+.message-input {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+}
+
+.message-input__addon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: background-color var(--duration-fast), color var(--duration-fast), border-color var(--duration-fast);
+}
+
+.message-input__addon-btn:hover {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  border-color: var(--color-muted);
+}
+
+.message-input__addon-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+.message-input__field {
+  flex: 1;
+  min-width: 0;
+}
+
+.message-input__textarea {
+  display: block;
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: var(--color-ink);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  resize: none;
+  overflow-y: auto;
+  transition: border-color var(--duration-fast);
+}
+
+.message-input__textarea::placeholder {
+  color: var(--color-muted);
+}
+
+.message-input__textarea:hover {
+  border-color: var(--color-muted);
+}
+
+.message-input__textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.message-input__textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.message-input__send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  cursor: pointer;
+  transition: opacity var(--duration-fast), background-color var(--duration-fast);
+}
+
+.message-input__send-btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.message-input__send-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.message-input__send-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* 响应式 */
+@media (max-width: 640px) {
+  .message-input {
+    padding: var(--space-2) var(--space-3);
+  }
+}
